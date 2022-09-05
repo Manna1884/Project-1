@@ -1,6 +1,6 @@
 #VPC 
 resource "aws_vpc" "project1" {
-  cidr_block       = "100.0.0.0/18"
+  cidr_block       = var.cidr_for_vpc
   instance_tenancy = "default"
 
   tags = {
@@ -11,7 +11,7 @@ resource "aws_vpc" "project1" {
 #Public Subnets-01
 resource "aws_subnet" "public-sub1" {
   vpc_id     = aws_vpc.project1.id
-  cidr_block = "100.0.1.0/24"
+  cidr_block = var.cidr_for_Public_subnet1
 
   tags = {
     Name = "public-sub1"
@@ -21,7 +21,7 @@ resource "aws_subnet" "public-sub1" {
 #Public Subnets-02
 resource "aws_subnet" "public-sub2" {
   vpc_id     = aws_vpc.project1.id
-  cidr_block = "100.0.2.0/24"
+  cidr_block = var.cidr_for_Public_subnet2
 
   tags = {
     Name = "public-sub2"
@@ -31,7 +31,7 @@ resource "aws_subnet" "public-sub2" {
 #Private Subnets-01
 resource "aws_subnet" "private-sub1" {
   vpc_id     = aws_vpc.project1.id
-  cidr_block = "100.0.3.0/24"
+  cidr_block = var.cidr_for_Private_subnet1
 
   tags = {
     Name = "private-sub1"
@@ -41,7 +41,7 @@ resource "aws_subnet" "private-sub1" {
   #Private Subnets-02
 resource "aws_subnet" "private-sub2" {
   vpc_id     = aws_vpc.project1.id
-  cidr_block = "100.0.4.0/24"
+  cidr_block = var.cidr_for_Private_subnet2
 
   tags = {
     Name = "private-sub2"
